@@ -61,12 +61,6 @@ public final class Constants {
         public static final int ARCADE_LEFT_DAMPENING = 60;
         public static final int ARCADE_RIGHT_DAMPENING = 60;
 
-        public static final double RED_BALL_RED_VALUE = 0.31;
-        public static final double RED_BALL_BLUE_VALUE = 0.20;
-
-        public static final double BLUE_BALL_RED_VALUE = 0.29;
-        public static final double BLUE_BALL_BLUE_VALUE = 0.22;
-
         public static final Integer BALL_DISTANCE = 15;
 
         /**

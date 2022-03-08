@@ -30,7 +30,7 @@ public class RobotContainer {
   private final OperateDrive operateDrive = new OperateDrive(driveUtil);
 
   private static XboxController driver;
-  private static XboxController operator;
+  // private static XboxController operator;
 
   /**
    * Added a new object - JoystickButton
