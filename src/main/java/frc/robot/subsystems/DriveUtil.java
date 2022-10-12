@@ -54,23 +54,24 @@ public class DriveUtil extends SubsystemBase {
     public void driveRobot() {
         // arcade drive
         if (RobotContainer.driveType.getSelected().equals(RobotContainer.arcade)) {
-        // If we're in ARCADE mode, use arcadeDrive
-        differentialDrive.arcadeDrive(RobotContainer.getDriverRightXboxX(), -RobotContainer.getDriverRightXboxY()/2);
+            // If we're in ARCADE mode, use arcadeDrive
+            differentialDrive.arcadeDrive(RobotContainer.getDriverRightXboxX(), -RobotContainer.getDriverRightXboxY()/2);
         } else if (RobotContainer.driveType.getSelected().equals(RobotContainer.tank)) {
-        // If we're in TANK mode, use tankDrive
-        differentialDrive.tankDrive(-RobotContainer.getDriverLeftXboxY()/2, RobotContainer.getDriverRightXboxY()/2);
-        } else {
-        // If we are in CURVATURE mode, use the curvature mode
-        double rotation = RobotContainer.getDriverLeftXboxX();
-        boolean isNegative = rotation < 0;
+            // If we're in TANK mode, use tankDrive
+            differentialDrive.tankDrive(-RobotContainer.getDriverLeftXboxY()/2, RobotContainer.getDriverRightXboxY()/2);
         
-        rotation *= rotation;
-        if (isNegative){
-          rotation *= -1;
-        }
-        rotation *= 0.75;
+        } else {
+            // If we are in CURVATURE mode, use the curvature mode
+            double rotation = RobotContainer.getDriverLeftXboxX();
+            boolean isNegative = rotation < 0;
+        
+            rotation *= rotation;
+            if (isNegative){
+                rotation *= -1;
+            }
+            rotation *= 0.75;
 
-        differentialDrive.curvatureDrive(rotation, (-RobotContainer.getDriverLeftXboxTrigger() + RobotContainer.getDriverRightXboxTrigger())/2, true);}
+            differentialDrive.curvatureDrive(rotation, (-RobotContainer.getDriverLeftXboxTrigger() + RobotContainer.getDriverRightXboxTrigger())/2, true);}
       }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {

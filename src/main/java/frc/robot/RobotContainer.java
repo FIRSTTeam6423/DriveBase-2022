@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.AutoTurn;
 import frc.robot.commands.OperateDrive;
 import frc.robot.subsystems.DriveUtil;
 
@@ -45,6 +46,8 @@ public class RobotContainer {
   public final static Byte tank = 1;
   public final static Byte curvature = 2;
 
+  private SendableChooser<Command> autoChooser = new SendableChooser<>();
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     driver = new XboxController(Constants.XBOX_DRIVER);
@@ -58,6 +61,11 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     configureDefaultCommands();
+    
+    autoChooser.setDefaultOption("Autoturn 2 Seconds", new AutoTurn(driveUtil, 0.5, 2));
+    autoChooser.addOption("Autoturn 5 Seconds", new AutoTurn(driveUtil, 0.5, 5));
+
+    SmartDashboard.putData("Autonomous Command", autoChooser);
   }
 
   /**
@@ -97,7 +105,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null;
+    return autoChooser.getSelected();
   }
 
   private void configureDefaultCommands(){
