@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.AutoDance;
+import frc.robot.commands.AutoDrive;
 import frc.robot.commands.AutoTurn;
 import frc.robot.commands.OperateDrive;
 import frc.robot.subsystems.DriveUtil;
@@ -62,8 +64,10 @@ public class RobotContainer {
     configureButtonBindings();
     configureDefaultCommands();
     
-    autoChooser.setDefaultOption("Autoturn 2 Seconds", new AutoTurn(driveUtil, 0.5, 2));
+    autoChooser.setDefaultOption("Autoturn 2 Seconds", new AutoTurn(driveUtil, 1, 2));
     autoChooser.addOption("Autoturn 5 Seconds", new AutoTurn(driveUtil, 0.5, 5));
+    autoChooser.addOption("AutoDrive 8 Seconds", new AutoDrive(driveUtil, .5 , 8));
+    autoChooser.addOption("Dance", new AutoDance(driveUtil));
 
     SmartDashboard.putData("Autonomous Command", autoChooser);
   }
